@@ -1,0 +1,14 @@
+.idea
+.classpath
+.project
+.settings
+*.iml
+*.log
+*.ipr
+*.iws
+*.bak
+target/
+logs/
+test-output/
+bin/
+obj/
