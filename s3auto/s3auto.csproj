@@ -52,6 +52,7 @@
     <Compile Include="Actions.cs" />
     <Compile Include="Activity.cs" />
     <Compile Include="Controls\IS3Window.cs" />
+    <Compile Include="Controls\RichangWindow.cs" />
     <Compile Include="Controls\S3ButtonRichang.cs" />
     <Compile Include="Controls\S3Main.cs" />
     <Compile Include="Controls\S3Window.cs" />
