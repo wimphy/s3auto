@@ -15,6 +15,7 @@ namespace s3auto.Controls
         private bool enableVerification = false;
         private XmlDocument doc = null;
         private XmlElement root = null;
+        private delegate void ClickDel(int x, int y, bool doubleClick, int sleep);
 
         public S3Window()
         {
@@ -49,17 +50,31 @@ namespace s3auto.Controls
 
         public virtual bool Click()
         {
-            bool isColorChanged = false;
-            Color c1 = WinAPI.GetColor(PosVerify.X, PosVerify.Y);
+            List<int> wList = new List<int>();
+            List<int> hList = new List<int>();
+            List<Color> colorBefore = new List<Color>();
+            Random r = new Random();
+            const int cnt = 3;
+            for (int i = 0; i < cnt; i++)
+            {
+                int w = r.Next(RectVerify.Width);
+                int h = r.Next(RectVerify.Height);
+                wList.Add(w);
+                hList.Add(h);
+                colorBefore.Add(WinAPI.GetColor(RectVerify.X + w, RectVerify.Y + h));
+            }
+
             WinAPI.Click(PosClick.X, PosClick.Y, false, SleepClick);
-            Color c2 = WinAPI.GetColor(PosVerify.X, PosVerify.Y);
-            log.WriteLine("{0} - {1}", c1.ToString(), c2.ToString());
-            if (!c1.Equals(c2))
-                isColorChanged = true;
-            return isColorChanged;
+            for (int i = 0; i < cnt; i++)
+            {
+                Color cAfter = WinAPI.GetColor(RectVerify.X + wList[i], RectVerify.Y + hList[i]);
+                if (!cAfter.Equals(colorBefore[i]))
+                    return false;
+            }
+            return true;
         }
 
-        static public Helper.Logger Log
+        public static Helper.Logger Log
         {
             get
             {
@@ -74,24 +89,36 @@ namespace s3auto.Controls
         {
             get
             {
-                XmlNode cp = root.SelectSingleNode(Name);
+                XmlNode cp = root.SelectSingleNode(Name+"/CenterPoint");
                 return cp.GetPoint();
             }
         }
 
         public Rectangle Rect
         {
-            get { throw new NotImplementedException(); }
+            get
+            {
+                XmlNode cp = root.SelectSingleNode(Name+"/Rect");
+                return cp.GetRect();
+            }
         }
 
-        public Point PosVerify
+        public Rectangle RectVerify
         {
-            get { throw new NotImplementedException(); }
+            get
+            {
+                XmlNode cp = root.SelectSingleNode(Name + "/RectVerify");
+                return cp.GetRect();
+            }
         }
 
         public Point PosClick
         {
-            get { throw new NotImplementedException(); }
+            get
+            {
+                XmlNode cp = root.SelectSingleNode(Name + "/PosClick");
+                return cp.GetPoint();
+            }
         }
     }
 }

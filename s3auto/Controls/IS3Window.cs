@@ -11,7 +11,7 @@ namespace s3auto.Controls
     {
         Rectangle Rect { get; }
         string Name { get; set; }
-        Point PosVerify { get; }
+        Rectangle RectVerify { get; }
         Point PosClick { get; }
         Point PosCenter { get; }
         int SleepClick { get; set; }

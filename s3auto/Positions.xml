@@ -3,7 +3,11 @@
   <lefttop x="95" y="240" type="360se5_Frame"></lefttop>
   <lefttop x="12" y="167" type="mine"></lefttop>
   <main>
-    <richang x="665" y="90">
+    <richang>
+      <CenterPoint x="665" y="90"></CenterPoint>
+      <Rect x="" y="" width="" height=""></Rect>
+      <RectVerify x="" y="" width="" height=""></RectVerify>
+      <PosClick x="" y=""></PosClick>
       <title x="553" y="164"></title>
       <meiri x="310" y="90">
         <jiuguan x="518" y="241"></jiuguan>
@@ -120,6 +124,8 @@
       <act>
         <jiguancheng x="570" y="360"></jiguancheng>
       </act>
+
+
     </richang>
     <lianqi>
       <b x="655" y="515"></b>
