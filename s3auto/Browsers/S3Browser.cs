@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using s3auto.Controls;
+using System.Drawing;
 
 namespace s3auto.Browsers
 {
@@ -17,7 +18,7 @@ namespace s3auto.Browsers
             get
             {
                 WinAPI.Rect rect;
-                WinAPI.ClientToScreen(HWND, out rect);
+                WinAPI.GetWindowRect(HWND, out rect);
                 return rect;
             }
         }

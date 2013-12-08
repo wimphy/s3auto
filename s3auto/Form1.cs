@@ -42,7 +42,7 @@ namespace s3auto
             if ("NativeWindowClass" == sb.ToString())
             {
                 WinAPI.Rect rect;
-                WinAPI.ClientToScreen(hwnd, out rect);
+                WinAPI.GetWindowRect(hwnd, out rect);
                 return false;
             }
             //sb.Clear();

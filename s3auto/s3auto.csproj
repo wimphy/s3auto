@@ -52,6 +52,7 @@
     <Compile Include="Actions.cs" />
     <Compile Include="Activity.cs" />
     <Compile Include="Controls\IS3Window.cs" />
+    <Compile Include="Controls\S3Button.cs" />
     <Compile Include="Controls\S3RichangWin.cs" />
     <Compile Include="Browsers\S3Browser.cs" />
     <Compile Include="Browsers\S3Firefox.cs" />

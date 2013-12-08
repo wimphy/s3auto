@@ -13,8 +13,8 @@ namespace s3auto.Controls
         public S3Main(IntPtr hwnd)
         {
             this.hwnd = hwnd;
-            rcw = new S3RichangWin();
-            rcw.ParentRect = this.Rect;
+            rcw = new S3RichangWin(Rect);
+            
         }
 
         public new Rectangle Rect
@@ -22,7 +22,7 @@ namespace s3auto.Controls
             get
             {
                 WinAPI.Rect rect;
-                WinAPI.ClientToScreen(hwnd, out rect);
+                WinAPI.GetWindowRect(hwnd, out rect);
                 return new Rectangle(rect.Left, rect.Top, rect.Right - rect.Left, rect.Bottom - rect.Top);
             }
         }

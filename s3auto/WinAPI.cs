@@ -77,6 +77,9 @@ namespace s3auto
         [DllImport("user32.dll")]
         public static extern IntPtr ClientToScreen(IntPtr hWnd, out Rect rect);
 
+        [DllImport("user32.dll")]
+        public static extern int GetWindowRect(IntPtr hwnd, out  Rect lpRect);
+
         [DllImport("user32.dll", EntryPoint = "keybd_event")]
         public static extern void keybd_event(
             byte bVk,
@@ -145,9 +148,6 @@ namespace s3auto
         public static extern IntPtr GetWindowDC(
          IntPtr hwnd
          );
-
-        [DllImport("user32.dll")]
-        public static extern bool GetWindowRect(IntPtr hwnd, out Rect rect);
 
         [DllImport("user32.dll")]
         public static extern void SwitchToThisWindow(IntPtr hwnd, bool fAltTab);

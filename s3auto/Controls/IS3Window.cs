@@ -9,8 +9,6 @@ namespace s3auto.Controls
 {
     public interface IS3Window
     {
-        Rectangle Rect { get; set; }
-        Rectangle ParentRect { get; set; }
         string Name { get; set; }
         Rectangle RectVerify { get; }
         Point PosClick { get; }
@@ -18,5 +16,6 @@ namespace s3auto.Controls
         int SleepClick { get; set; }
         bool EnableVerification { get; set; }
         bool Click();
+        void Init();
     }
 }

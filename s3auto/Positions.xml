@@ -5,24 +5,17 @@
   <main>
     <richang>
       <CenterPoint x="665" y="90"></CenterPoint>
-      <Rect x="" y="" width="" height=""></Rect>
-      <RectVerify x="" y="" width="" height=""></RectVerify>
+      <Rect x="259" y="82" width="598" height="421"></Rect>
+      <RectVerify x="259" y="82" width="598" height="421"></RectVerify>
       <PosClick x="677" y="29"></PosClick>
       <title x="553" y="164"></title>
-      <meiri x="310" y="90">
-        <jiuguan x="518" y="241"></jiuguan>
-        <shushang x="518" y="283"></shushang>
-        <guaji x="518" y="322"></guaji>
-        <xilian x="518" y="367"></xilian>
-        <biguan x="518" y="410"></biguan>
-        <suoyao x="518" y="450"></suoyao>
+      <meiri>
       </meiri>
-      <juezhan x="380" y="190">
-        <i90 x="560" y="450"></i90>
-        <i75 x="375" y="450"></i75>
-        <i60 x="745" y="295"></i60>
-        <i45 x="560" y="295"></i45>
-        <i30 x="375" y="295"></i30>
+      <juezhan>
+        <PosClick x="385" y="128"></PosClick>
+        <jzLatest>
+          <PosClick x="376" y="305"></PosClick>
+        </jzLatest>
       </juezhan>
       <fuben x="450" y="190">
         <fb x="730" y="450"></fb>
@@ -137,5 +130,10 @@
       <lvl5 x="691" y="328"></lvl5>
       <lvl6 x="704" y="328"></lvl6>
     </lianqi>
+    <warn>
+      <Rect x="406" y="160" width="191" height="72"></Rect>
+      <RectVerify x="406" y="160" width="191" height="72"></RectVerify>
+      <PosClick x="480" y="217"></PosClick>
+    </warn>
   </main>
 </Position>

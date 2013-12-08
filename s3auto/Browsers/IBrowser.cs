@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using s3auto.Controls;
+using System.Drawing;
 
 namespace s3auto.Browsers
 {

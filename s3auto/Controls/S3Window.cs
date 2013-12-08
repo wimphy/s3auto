@@ -14,8 +14,8 @@ namespace s3auto.Controls
         private int sleepAfterClick = 2000;
         private bool enableVerification = false;
         private string name = null;
-        private Rectangle parentRect;
-        private Rectangle m_rect;
+        protected Rectangle parentRect;
+        protected Rectangle m_rect;
         private XmlDocument doc = null;
         private XmlElement root = null;
         private delegate void ClickDel(int x, int y, bool doubleClick, int sleep);
@@ -25,6 +25,7 @@ namespace s3auto.Controls
             doc = new XmlDocument();
             doc.Load("Positions.xml");
             root = doc.DocumentElement;
+
         }
 
         public string Name
@@ -54,9 +55,11 @@ namespace s3auto.Controls
 
         public virtual bool Click()
         {
+            int x = parentRect.X + PosClick.X;
+            int y = parentRect.Y + PosClick.Y;
             if (!EnableVerification)
             {
-                WinAPI.Click(PosClick.X, PosClick.Y, false, SleepClick);
+                WinAPI.Click(x, y, false, SleepClick);
                 return true;
             }
 
@@ -71,13 +74,13 @@ namespace s3auto.Controls
                 int h = r.Next(RectVerify.Height);
                 wList.Add(w);
                 hList.Add(h);
-                colorBefore.Add(WinAPI.GetColor(RectVerify.X + w, RectVerify.Y + h));
+                colorBefore.Add(WinAPI.GetColor(parentRect.X + RectVerify.X + w, parentRect.Y + RectVerify.Y + h));
             }
 
-            WinAPI.Click(PosClick.X, PosClick.Y, false, SleepClick);
+            WinAPI.Click(x, y, false, SleepClick);
             for (int i = 0; i < cnt; i++)
             {
-                Color cAfter = WinAPI.GetColor(RectVerify.X + wList[i], RectVerify.Y + hList[i]);
+                Color cAfter = WinAPI.GetColor(parentRect.X + RectVerify.X + wList[i], parentRect.Y + RectVerify.Y + hList[i]);
                 if (!cAfter.Equals(colorBefore[i]))
                     return false;
             }
@@ -99,26 +102,26 @@ namespace s3auto.Controls
         {
             get
             {
-                XmlNode cp = root.SelectSingleNode(Name+"/CenterPoint");
+                XmlNode cp = root.SelectSingleNode(Name + "/CenterPoint");
                 return cp.GetPoint();
             }
         }
 
-        public Rectangle Rect
-        {
-            get
-            {
-                XmlNode cp = root.SelectSingleNode(Name+"/Rect");
-                m_rect = cp.GetRect();
-                m_rect = new Rectangle(cp.GetRect().X + this.Rect.X, 
-                    cp.GetRect().Y + this.Rect.Y, cp.GetRect().Width, cp.GetRect().Height);
-                return m_rect;
-            }
-            set
-            {
-                m_rect = value;
-            }
-        }
+        //public Rectangle Rect
+        //{
+        //    get
+        //    {
+        //        XmlNode cp = root.SelectSingleNode(Name+"/Rect");
+        //        m_rect = cp.GetRect();
+        //        m_rect = new Rectangle(cp.GetRect().X + this.Rect.X, 
+        //            cp.GetRect().Y + this.Rect.Y, cp.GetRect().Width, cp.GetRect().Height);
+        //        return m_rect;
+        //    }
+        //    set
+        //    {
+        //        m_rect = value;
+        //    }
+        //}
 
         public Rectangle RectVerify
         {
@@ -139,16 +142,24 @@ namespace s3auto.Controls
         }
 
 
-        public Rectangle ParentRect
+        //public Rectangle ParentRect
+        //{
+        //    get
+        //    {
+        //        return parentRect;
+        //    }
+        //    set
+        //    {
+        //        parentRect=value;
+        //    }
+        //}
+
+
+        public virtual void Init()
         {
-            get
-            {
-                return parentRect;
-            }
-            set
-            {
-                parentRect=value;
-            }
+            XmlNode cp = root.SelectSingleNode(Name + "/Rect");
+            m_rect = new Rectangle(cp.GetRect().X + parentRect.X,
+                cp.GetRect().Y + parentRect.Y, cp.GetRect().Width, cp.GetRect().Height);
         }
     }
 }
