@@ -34,6 +34,7 @@ namespace s3auto
         public const int KEYEVENTF_KEYUP = 2;
         public const byte VK_SHIFT = 16;
         public const byte VK_SPACE = 32;
+        public delegate bool CallBack(IntPtr hwnd, IntPtr lParam);
 
         public struct Rect
         {
@@ -43,6 +44,9 @@ namespace s3auto
             public int Bottom;
         }
 
+        [DllImport("user32.dll")]
+        public static extern IntPtr EnumChildWindows(IntPtr hWndParent, CallBack lpfn, IntPtr lParam); 
+
         [DllImport("user32.dll", EntryPoint = "FindWindow")]
         public static extern IntPtr FindWindow(string className, string windowName);
 
@@ -51,6 +55,9 @@ namespace s3auto
 
         [DllImport("user32.dll", EntryPoint = "GetWindowText")]
         public static extern IntPtr GetWindowText(IntPtr wnd, StringBuilder text, int len);
+
+        [DllImport("User32.dll", CharSet = CharSet.Auto)]
+        public static extern int GetClassName(IntPtr hWnd, StringBuilder ClassName, int nMaxCount);
 
         [DllImport("user32.dll", EntryPoint = "mouse_event")]
         public static extern IntPtr mouse_event(int dwFlags, int dx, int dy, int cButtons, int dwExtraInfo);

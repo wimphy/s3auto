@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Threading;
 using System.Xml;
+using s3auto.Browsers;
 
 namespace s3auto
 {
@@ -32,8 +33,32 @@ namespace s3auto
 
         public WebBrowser Browser { get { return webBrowser1; } }
 
+
+        public bool EnumProc(IntPtr hwnd, IntPtr lParam)
+        {
+            StringBuilder sb = new StringBuilder(200);
+
+            WinAPI.GetClassName(hwnd, sb, 200);
+            if ("NativeWindowClass" == sb.ToString())
+            {
+                WinAPI.Rect rect;
+                WinAPI.ClientToScreen(hwnd, out rect);
+                return false;
+            }
+            //sb.Clear();
+            return true;
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
+            S3Firefox ff = new S3Firefox();
+            ff.Activate();
+            System.Threading.Thread.Sleep(2000);
+            ff.FlashWin.RichangWin.Click();
+
+            IntPtr h = WinAPI.FindWindow("SE_AxControl", null);
+            WinAPI.EnumChildWindows(h, EnumProc, new IntPtr(0));
+
             thread1 = new Thread(Start);
             string command = comboBox1.Text;
             if (checkBox1.Checked)

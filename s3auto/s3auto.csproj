@@ -52,8 +52,9 @@
     <Compile Include="Actions.cs" />
     <Compile Include="Activity.cs" />
     <Compile Include="Controls\IS3Window.cs" />
-    <Compile Include="Controls\RichangWindow.cs" />
-    <Compile Include="Controls\S3ButtonRichang.cs" />
+    <Compile Include="Controls\S3RichangWin.cs" />
+    <Compile Include="Browsers\S3Browser.cs" />
+    <Compile Include="Browsers\S3Firefox.cs" />
     <Compile Include="Controls\S3Main.cs" />
     <Compile Include="Controls\S3Window.cs" />
     <Compile Include="EmbededBrowser.cs" />
@@ -70,7 +71,7 @@
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
     <Compile Include="Helper\Helper.cs" />
-    <Compile Include="IBrowser.cs" />
+    <Compile Include="Browsers\IBrowser.cs" />
     <Compile Include="Helper\Logger.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -109,6 +110,7 @@
     </Content>
     <Content Include="yhzq.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

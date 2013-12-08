@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Drawing;
 
 namespace s3auto.Controls
 {
-    public class RichangWindow : S3Window
+    public class S3RichangWin : S3Window
     {
-        public RichangWindow()
+        public S3RichangWin()
         {
-            Name = "";
+            Name = "main/richang";
         }
-
-
     }
 }
