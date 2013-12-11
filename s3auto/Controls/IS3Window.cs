@@ -16,6 +16,12 @@ namespace s3auto.Controls
         int SleepClick { get; set; }
         bool EnableVerification { get; set; }
         bool Click();
-        void Init();
+        //void Init();
+    }
+
+    public struct PointColor
+    {
+        public Point p;
+        public Color c;
     }
 }

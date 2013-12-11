@@ -51,7 +51,7 @@ namespace s3auto
 
         private void button1_Click(object sender, EventArgs e)
         {
-            S3Firefox ff = new S3Firefox();
+            S3Sougou ff = new S3Sougou();
             ff.Activate();
             System.Threading.Thread.Sleep(2000);
             ff.FlashWin.RichangWin.Click();

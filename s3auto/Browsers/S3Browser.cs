@@ -4,14 +4,21 @@ using System.Linq;
 using System.Text;
 using s3auto.Controls;
 using System.Drawing;
+using System.Xml;
 
 namespace s3auto.Browsers
 {
     public abstract class S3Browser : IBrowser
     {
-        protected string flashWinClassName = null;
-        protected IntPtr flashHwnd;
-        protected string browserClassName = null;
+        private string browserName = null;
+        private IntPtr flashHwnd;
+        protected bool bExists = false;
+        protected const string LockFlag = "LockFlag";
+
+        public S3Browser(string name)
+        {
+            browserName = name;
+        }
 
         public WinAPI.Rect Rect
         {
@@ -27,20 +34,43 @@ namespace s3auto.Browsers
         {
             get
             {
-                StringBuilder sb = new StringBuilder(200);
-                WinAPI.GetClassName(HWND, sb, 200);
-                return sb.ToString();
+                XmlNode n = Helper.Helper.XMLRoot.SelectSingleNode(
+                    string.Format("browsers/browser[name='{0}']/@className", browserName));
+                return n.Value;
+            }
+        }
+
+        public string FwClassName
+        {
+            get
+            {
+                XmlNode n = Helper.Helper.XMLRoot.SelectSingleNode(
+                    string.Format("browsers/browser[name='{0}']/@flashWinClassName", browserName));
+                return n.Value;
+            }
+        }
+
+        public string FwRootCN
+        {
+            get
+            {
+                XmlNode n = Helper.Helper.XMLRoot.SelectSingleNode(
+                    string.Format("browsers/browser[name='{0}']/@flashWinRootClassName", browserName));
+                return n.Value;
             }
         }
 
         public IntPtr HWND
         {
-            get { return WinAPI.FindWindow(browserClassName, null); }
+            get { return WinAPI.FindWindow(ClassName, null); }
         }
 
         public void Activate()
         {
-            WinAPI.SwitchToThisWindow(HWND, true);
+            lock (LockFlag)
+            {
+                WinAPI.SwitchToThisWindow(HWND, true);
+            }
         }
 
         public virtual void Minimize()
@@ -57,12 +87,20 @@ namespace s3auto.Browsers
             }
         }
 
+        public bool Exists
+        {
+            get
+            {
+                return bExists;
+            }
+        }
 
         public S3Main FlashWin
         {
             get
             {
-                return new S3Main(flashHwnd);
+                S3Main m = new S3Main(flashHwnd);
+                return m;
             }
         }
 
@@ -72,7 +110,7 @@ namespace s3auto.Browsers
             StringBuilder sb = new StringBuilder(200);
 
             WinAPI.GetClassName(hwnd, sb, 200);
-            if (flashWinClassName == sb.ToString())
+            if (FwClassName == sb.ToString())
             {
                 flashHwnd = hwnd;
                 return false;

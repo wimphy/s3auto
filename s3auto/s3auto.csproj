@@ -51,13 +51,19 @@
   <ItemGroup>
     <Compile Include="Actions.cs" />
     <Compile Include="Activity.cs" />
+    <Compile Include="Browsers\S3Chrome.cs" />
+    <Compile Include="Browsers\S3Firefox.cs" />
+    <Compile Include="Browsers\S3Opera.cs" />
+    <Compile Include="Controls\S3WinCircle.cs" />
+    <Compile Include="Controls\S3WinArmageddon.cs" />
     <Compile Include="Controls\IS3Window.cs" />
     <Compile Include="Controls\S3Button.cs" />
     <Compile Include="Controls\S3RichangWin.cs" />
     <Compile Include="Browsers\S3Browser.cs" />
-    <Compile Include="Browsers\S3Firefox.cs" />
+    <Compile Include="Browsers\S3Sougou.cs" />
     <Compile Include="Controls\S3Main.cs" />
     <Compile Include="Controls\S3Window.cs" />
+    <Compile Include="Controls\S3WinDungeon.cs" />
     <Compile Include="EmbededBrowser.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

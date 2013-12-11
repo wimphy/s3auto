@@ -6,22 +6,67 @@ using System.Drawing;
 
 namespace s3auto.Controls
 {
-    public class S3RichangWin : S3Window
+    public class WinS3DailyTask : S3Window
     {
-        public S3RichangWin(Rectangle parent)
+        public WinS3DailyTask(Rectangle parent)
+            : base(parent)
         {
             Name = "main/richang";
-            parentRect = parent;
-            Init();
+            //parentRect = parent;
+            //Init();
         }
 
-        public S3Button Meiri
+        public ButtonDailyTaskClass ButtonDailyTask
         {
             get
             {
-                S3Button buttonMeiri = new S3Button(parentRect);
-                buttonMeiri.Name = "";
-                return buttonMeiri;
+                ButtonDailyTaskClass button = new ButtonDailyTaskClass(parentRect);
+                button.Name = "";
+                return button;
+                //main/warn
+            }
+        }
+
+        public ButtonArmageddonClass ButtonArmageddon
+        {
+            get
+            {
+                ButtonArmageddonClass button = new ButtonArmageddonClass(parentRect);
+                button.Name = "";
+                return button;
+                //main/warn
+            }
+        }
+
+        public ButtonDungeonClass ButtonDungeon
+        {
+            get
+            {
+                ButtonDungeonClass button = new ButtonDungeonClass(parentRect);
+                button.Name = "";
+                return button;
+                //main/warn
+            }
+        }
+
+        public ButtonTeamClass ButtonTeam
+        {
+            get
+            {
+                ButtonTeamClass button = new ButtonTeamClass(parentRect);
+                button.Name = "";
+                return button;
+                //main/warn
+            }
+        }
+
+        public ButtonCircleClass ButtonCircle
+        {
+            get
+            {
+                ButtonCircleClass button = new ButtonCircleClass(parentRect);
+                button.Name = "";
+                return button;
                 //main/warn
             }
         }

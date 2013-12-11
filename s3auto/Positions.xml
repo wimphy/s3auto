@@ -1,7 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Position>
-  <lefttop x="95" y="240" type="360se5_Frame"></lefttop>
-  <lefttop x="12" y="167" type="mine"></lefttop>
+  <browsers>
+    <browser name="sougou" flashWinClassName="NativeWindowClass" flashWinRootClassName="SE_AxControl" className="SE_SogouExplorerFrame"></browser>
+    <browser name="firefox" flashWinClassName="" flashWinRootClassName="" className=""></browser>
+    <browser name="chrome" flashWinClassName="" flashWinRootClassName="" className=""></browser>
+    <browser name="opera" flashWinClassName="" flashWinRootClassName="" className=""></browser>
+  </browsers>
   <main>
     <richang>
       <CenterPoint x="665" y="90"></CenterPoint>
@@ -17,108 +21,24 @@
           <PosClick x="376" y="305"></PosClick>
         </jzLatest>
       </juezhan>
-      <fuben x="450" y="190">
-        <fb x="730" y="450"></fb>
-        <fb x="550" y="450"></fb>
-        <fb x="370" y="450"></fb>
-        <fb x="730" y="295">
-          <p x="775" y="341"></p>
-          <p x="595" y="361"></p>
-          <p x="550" y="262"></p>
-          <p x="377" y="346"></p>
-          <p x="403" y="253"></p>
-          <p x="679" y="308"></p>
-          <p x="539" y="295"></p>
-          <p x="368" y="336"></p>
-          <p x="400" y="245"></p>
-          <p x="242" y="294"></p>
-          <p x="855" y="369"></p>
-          <p x="702" y="325"></p>
-          <p x="513" y="377"></p>
-          <p x="496" y="285"></p>
-          <p x="240" y="295"></p>
-          <p x="688" y="434"></p>
-          <p x="347" y="454"></p>
-          <p x="675" y="252"></p>
-          <p x="314" y="273"></p>
-          <p x="509" y="239"></p>
-        </fb>
-        <fb x="550" y="295">
-          <p x="685" y="411"></p>
-          <p x="503" y="322"></p>
-          <p x="447" y="196"></p>
-          <p x="237" y="305"></p>
-          <p x="262" y="206"></p>
-          <p x="798" y="402"></p>
-          <p x="673" y="466"></p>
-          <p x="578" y="361"></p>
-          <p x="403" y="278"></p>
-          <p x="258" y="196"></p>
-          <p x="668" y="460"></p>
-          <p x="676" y="335"></p>
-          <p x="494" y="357"></p>
-          <p x="440" y="224"></p>
-          <p x="260" y="207"></p>
-          <p x="732" y="354"></p>
-          <p x="570" y="425"></p>
-          <p x="508" y="256"></p>
-          <p x="354" y="326"></p>
-          <p x="335" y="190"></p>
-        </fb>
-        <fb x="370" y="295" width="177" height="155"></fb>
+      <fuben>
+        <PosClick x="385" y="128"></PosClick>
+        <jzLatest>
+          <PosClick x="376" y="305"></PosClick>
+        </jzLatest>
       </fuben>
-      <zhenfa x="600" y="185">
-        <zf x="780" y="438"></zf>
-        <zf x="650" y="438"></zf>
-        <zf x="520" y="438"></zf>
-        <zf x="390" y="438"></zf>
-        <zf x="780" y="343"></zf>
-        <zf x="650" y="343"></zf>
-        <zf x="520" y="406" name="diandaobagua">
-          <p x="163" y="361"></p>
-          <p x="370" y="345"></p>
-          <p x="862" y="365"></p>
-          <p x="731" y="296"></p>
-          <p x="693" y="175"></p>
-          <p x="611" y="195"></p>
-          <p x="320" y="166"></p>
-          <p x="361" y="214"></p>
-          <p x="523" y="246"></p>
-        </zf>
-        <zf x="390" y="343">
-          <p x="144" y="320"></p>
-          <p x="348" y="399"></p>
-          <p x="706" y="398"></p>
-          <p x="873" y="300"></p>
-          <p x="797" y="208"></p>
-          <p x="596" y="179"></p>
-          <p x="377" y="182"></p>
-          <p x="194" y="223"></p>
-          <p x="358" y="257"></p>
-          <p x="651" y="255"></p>
-          <p x="515" y="215"></p>
-        </zf>
-        <zf x="780" y="248"></zf>
-        <zf x="650" y="248">
-          <p x="317" y="357"></p>
-          <p x="728" y="359"></p>
-          <p x="859" y="274"></p>
-          <p x="768" y="204"></p>
-          <p x="630" y="171"></p>
-          <p x="412" y="178"></p>
-          <p x="272" y="208"></p>
-          <p x="526" y="183"></p>
-        </zf>
-        <zf x="520" y="248"></zf>
-        <zf x="390" y="248" width="130" height="95"></zf>
-        <start x="532" y="473"></start>
-        <close x="811" y="158"></close>
+      <zudui>
+        <PosClick x="385" y="128"></PosClick>
+        <jzLatest>
+          <PosClick x="376" y="305"></PosClick>
+        </jzLatest>
+      </zudui>
+      <zhenfa>
+        <PosClick x="385" y="128"></PosClick>
+        <jzLatest>
+          <PosClick x="376" y="305"></PosClick>
+        </jzLatest>
       </zhenfa>
-      <act>
-        <jiguancheng x="570" y="360"></jiguancheng>
-      </act>
-
-
     </richang>
     <lianqi>
       <b x="655" y="515"></b>

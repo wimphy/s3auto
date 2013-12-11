@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml;
+
 namespace s3auto.Helper
 {
     public static class Helper
     {
+        private static XmlDocument doc = null;
         public static System.Drawing.Point GetPoint(this System.Xml.XmlNode n)
         {
             int x =0;
@@ -40,6 +43,27 @@ namespace s3auto.Helper
                 new Logger().WriteLine(e.Message);
             }
             return new System.Drawing.Rectangle(x, y, width, height);
+        }
+
+        public static XmlNode XMLRoot
+        {
+            get
+            {
+                return XMLdoc.DocumentElement;
+            }
+        }
+
+        public static XmlDocument XMLdoc
+        {
+            get
+            {
+                if (doc == null)
+                {
+                    doc = new XmlDocument();
+                    doc.Load("Positions.xml");
+                }
+                return doc;
+            }
         }
     }
 }

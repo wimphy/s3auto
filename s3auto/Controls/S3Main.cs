@@ -9,29 +9,48 @@ namespace s3auto.Controls
     public class S3Main : S3Window
     {
         private IntPtr hwnd;
-        private S3RichangWin rcw = null;
+        private WinS3DailyTask rcw = null;
+        private S3WinArmageddon s3WinArmageddon = null;
+        private Point offset;
+
         public S3Main(IntPtr hwnd)
         {
             this.hwnd = hwnd;
-            rcw = new S3RichangWin(Rect);
-            
+            offset = new Point(0, 0);
+            rcw = new WinS3DailyTask(Rect);
+            s3WinArmageddon = new S3WinArmageddon(Rect);
         }
 
-        public new Rectangle Rect
+        public Rectangle Rect
         {
             get
             {
                 WinAPI.Rect rect;
                 WinAPI.GetWindowRect(hwnd, out rect);
-                return new Rectangle(rect.Left, rect.Top, rect.Right - rect.Left, rect.Bottom - rect.Top);
+                return new Rectangle(rect.Left + Offset.X, rect.Top + Offset.Y,
+                    rect.Right - rect.Left, rect.Bottom - rect.Top);
             }
         }
 
-        public S3RichangWin RichangWin
+        public Point Offset
+        {
+            get { return offset; }
+            set { offset = value; }
+        }
+
+        public WinS3DailyTask RichangWin
         {
             get
             {
                 return rcw;
+            }
+        }
+
+        public S3WinArmageddon WinArmageddon
+        {
+            get
+            {
+                return s3WinArmageddon;
             }
         }
     }

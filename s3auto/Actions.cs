@@ -2,48 +2,122 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
+using s3auto.Browsers;
+using s3auto.Controls;
+using System.Drawing;
 
 namespace s3auto
 {
     public class Actions
     {
-        public void Start(IntPtr handle)
-        {
-            WinAPI.Rect rect = new WinAPI.Rect();
-            WinAPI.GetWindowRect(handle, out rect);
+        private IBrowser b = null;
+        private Thread t = null;
 
-            WinAPI.SetCursorPos(rect.Left, rect.Top);
-            WinAPI.mouse_event(WinAPI.MOUSEEVENTF_MOVE, 100, 13, 0, 0);
-            WinAPI.mouse_event(WinAPI.MOUSEEVENTF_RIGHTDOWN | WinAPI.MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0);
+        public Actions(IBrowser b)
+        {
+            this.b = b;
         }
 
-        public void zhichi(int x, int y)
+        public void Run()
         {
-            /*697,310
-            791,334
-            382,466
-            382,533*/
-            WinAPI.mouse_event(WinAPI.MOUSEEVENTF_MOVE, x+697, y+310, 0, 0);
-            WinAPI.mouse_event(WinAPI.MOUSEEVENTF_RIGHTDOWN | WinAPI.MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0);
-            System.Threading.Thread.Sleep(1000);
+            t = new Thread(new ThreadStart(DoAll));
+            t.Start();
+        }
 
-            WinAPI.mouse_event(WinAPI.MOUSEEVENTF_MOVE, x+791, y+334, 0, 0);
-            WinAPI.mouse_event(WinAPI.MOUSEEVENTF_RIGHTDOWN | WinAPI.MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0);
-            System.Threading.Thread.Sleep(1000);
+        public void Stop()
+        {
+            if (t != null)
+                t.Abort();
+        }
 
-            for (int i = 0; i < 40; i++)
+        public void DoArmageddonEasy()
+        {
+            b.Activate();
+            Thread.Sleep(2000);
+            b.FlashWin.RichangWin.Click();
+            b.FlashWin.RichangWin.ButtonArmageddon.ButtonArmageddonLatest.Click();
+            b.FlashWin.WinArmageddon.ButtonNormal.Click();
+            b.FlashWin.WinArmageddon.ButtonAuto.Click();
+            b.FlashWin.WinArmageddon.ButtonAutoConfirm.Click();
+            List<PointColor> list = b.FlashWin.WinArmageddon.GetInitialColors();
+            b.Minimize();
+
+            for (int i = 0; i < 30; i++)
             {
-                WinAPI.mouse_event(WinAPI.MOUSEEVENTF_MOVE, x+382, y+466, 0, 0);
-                WinAPI.mouse_event(WinAPI.MOUSEEVENTF_RIGHTDOWN | WinAPI.MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0);
-                System.Threading.Thread.Sleep(30000);
+                Thread.Sleep(120000);
+                if (IsColorChange(list))
+                    break;
             }
+        }
 
-            for (int i = 0; i < 40; i++)
+        public void DoArmageddonHard()
+        {
+            b.Activate();
+            Thread.Sleep(2000);
+            b.FlashWin.RichangWin.Click();
+            b.FlashWin.RichangWin.ButtonArmageddon.ButtonArmageddonLatest.Click();
+            b.FlashWin.WinArmageddon.ButtonHard.Click();
+            b.FlashWin.WinArmageddon.ButtonAuto.Click();
+            b.FlashWin.WinArmageddon.ButtonAutoConfirm.Click();
+            List<PointColor> list = b.FlashWin.WinArmageddon.GetInitialColors();
+            b.Minimize();
+
+            for (int i = 0; i < 30; i++)
             {
-                WinAPI.mouse_event(WinAPI.MOUSEEVENTF_MOVE, x+382, y+533, 0, 0);
-                WinAPI.mouse_event(WinAPI.MOUSEEVENTF_RIGHTDOWN | WinAPI.MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0);
-                System.Threading.Thread.Sleep(30000);
+                Thread.Sleep(120000);
+                if (IsColorChange(list))
+                    break;
             }
+        }
+
+        public bool IsColorChange(List<PointColor> colorBefore, int iWaitforActive = 10000)
+        {
+            b.Activate();
+            Thread.Sleep(iWaitforActive);
+            bool flag = true;
+            for (int i = 0; i < colorBefore.Count; i++)
+            {
+                Color cAfter = WinAPI.GetColor(colorBefore[i].p.X, colorBefore[i].p.Y);
+                if (cAfter.Equals(colorBefore[i].c))
+                    flag &= false;
+            }
+            return flag;
+        }
+
+        public void DoTeamBat()
+        { }
+
+        public void DoDungeon() 
+        { }
+
+        public void DoCircle()
+        { }
+
+        public void DoMonsterTower()
+        { }
+
+        public void Event1030()
+        { }
+
+        public void Event1200()
+        { }
+
+        public void Event1530()
+        { }
+
+        public void Event1600()
+        { }
+
+        public void Event2000()
+        { }
+
+        public void Event2030()
+        { }
+
+        public void DoAll()
+        {
+
         }
     }
 }
