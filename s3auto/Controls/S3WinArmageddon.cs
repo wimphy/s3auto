@@ -8,11 +8,15 @@ namespace s3auto.Controls
 {
     public class S3WinArmageddon : S3Window
     {
-        protected S3Button buttonNormal = null;
-        protected S3Button buttonHard = null;
-        protected S3Button buttonAuto = null;
-        protected S3Button buttonAutoConfirm = null;
-
+        private S3Button buttonNormal = null;
+        private S3Button buttonHard = null;
+        private S3Button buttonAuto = null;
+        private S3Button buttonAutoConfirm = null;
+        private S3Button buttonStop;
+        private S3Button buttonStopConfirm;
+        private S3Button buttonRollStart;
+        private S3Button buttonRoll;
+        
         public S3WinArmageddon(Rectangle parent)
             : base(parent)
         {
@@ -24,6 +28,14 @@ namespace s3auto.Controls
             buttonAuto.Name = "";
             buttonAutoConfirm = new S3Button(parent);
             buttonAutoConfirm.Name = "";
+            buttonRollStart = new S3Button(parent);
+            buttonRollStart.Name = "";
+            buttonRoll = new S3Button(parent);
+            buttonRoll.Name = "" + new Random().Next(5);
+            buttonStop = new S3Button(parent);
+            buttonStop.Name = "";
+            buttonStopConfirm = new S3Button(parent);
+            buttonStopConfirm.Name = "";
         }
 
         public S3Button ButtonNormal
@@ -58,8 +70,37 @@ namespace s3auto.Controls
             }
         }
 
-        public virtual void WaitForComplete()
+        public S3Button ButtonStop
         {
+            get
+            {
+                return buttonStop;
+            }
+        }
+
+        public S3Button ButtonStopConfirm
+        {
+            get
+            {
+                return buttonStopConfirm;
+            }
+        }
+
+        public S3Button ButtonRollStart
+        {
+            get
+            {
+                System.Threading.Thread.Sleep(10000);
+                return buttonRollStart;
+            }
+        }
+
+        public S3Button ButtonRoll
+        {
+            get
+            {
+                return buttonRoll;
+            }
         }
     }
 }

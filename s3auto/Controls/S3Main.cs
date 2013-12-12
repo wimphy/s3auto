@@ -15,8 +15,8 @@ namespace s3auto.Controls
         private S3WinCircle s3WinCircle = null;
         private Point offset;
         private S3WinMTower s3WinMTower;
-        private S3Button buttonHeroIslandConfirm;
         private S3WinHangup winHangup;
+        private S3Button buttonCancelHangup;
 
         public S3Main(IntPtr hwnd)
         {
@@ -27,7 +27,6 @@ namespace s3auto.Controls
             s3WinDungeon = new S3WinDungeon(Rect);
             s3WinCircle = new S3WinCircle(Rect);
             s3WinMTower = new S3WinMTower(Rect);
-            buttonHeroIslandConfirm = new S3Button(Rect);
             winHangup = new S3WinHangup(Rect);
         }
 
@@ -93,6 +92,14 @@ namespace s3auto.Controls
             get
             {
                 return winHangup;
+            }
+        }
+
+        public S3Button ButtonCancelHangup
+        {
+            get
+            {
+                return buttonCancelHangup;
             }
         }
     }
