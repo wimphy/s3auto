@@ -30,6 +30,8 @@ namespace s3auto.Browsers
             }
         }
 
+        public bool Idle { get; set; }
+
         public string ClassName
         {
             get

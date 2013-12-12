@@ -6,11 +6,11 @@ using System.Drawing;
 
 namespace s3auto.Controls
 {
-    public class S3WinCircle : S3Window
+    public class S3WinMTower:S3Window
     {
         private S3Button buttonAutoConfirm;
         private S3Button buttonAuto;
-        public S3WinCircle(Rectangle parent)
+        public S3WinMTower(Rectangle parent)
             : base(parent)
         {
             //buttonNormal = new S3Button(parent);
@@ -37,6 +37,12 @@ namespace s3auto.Controls
             {
                 return buttonAutoConfirm;
             }
+        }
+
+
+        internal void Exit()
+        {
+            throw new NotImplementedException();
         }
     }
 }

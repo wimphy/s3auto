@@ -6,9 +6,9 @@ using System.Drawing;
 
 namespace s3auto.Controls
 {
-    public class WinS3DailyTask : S3Window
+    public class S3WinDailyTask : S3Window
     {
-        public WinS3DailyTask(Rectangle parent)
+        public S3WinDailyTask(Rectangle parent)
             : base(parent)
         {
             Name = "main/richang";

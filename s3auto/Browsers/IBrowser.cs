@@ -20,5 +20,6 @@ namespace s3auto.Browsers
         void Activate();
         void Minimize();
         bool EnumProc(IntPtr hwnd, IntPtr lParam);
+        bool Idle { get; set; }
     }
 }
