@@ -213,8 +213,8 @@ namespace s3auto
 
         public void DoTeamBat()
         {
-            SetBrowserStatus(false);
-            SetBrowserStatus(true);
+            b.Activate();
+            b.Minimize();
         }
 
         public void DoDungeon()
@@ -319,7 +319,7 @@ namespace s3auto
         {
             b.Activate();
             Thread.Sleep(2000);
-            HeroIsland hi = new HeroIsland();
+            HeroIsland hi = new HeroIsland(b);
             hi.Do();
         }
 
@@ -339,17 +339,17 @@ namespace s3auto
 
             if (DateTime.Now.DayOfWeek == DayOfWeek.Saturday && DateTime.Now.DayOfWeek == DayOfWeek.Sunday)
             {
-                CityBat cb = new CityBat();
+                CityBat cb = new CityBat(b);
                 cb.Do();
             }
             else if (DateTime.Now.DayOfWeek == DayOfWeek.Tuesday || DateTime.Now.DayOfWeek == DayOfWeek.Thursday)
             {
-                SupremacyBat sb = new SupremacyBat();
+                SupremacyBat sb = new SupremacyBat(b);
                 sb.Do();
             }
             else
             {
-                CampBat cb = new CampBat();
+                CampBat cb = new CampBat(b);
                 cb.Do();
             }
         }
@@ -358,7 +358,7 @@ namespace s3auto
         {
             b.Activate();
             Thread.Sleep(2000);
-            FactionBat fb = new FactionBat();
+            FactionBat fb = new FactionBat(b);
             fb.Do();
         }
 

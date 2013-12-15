@@ -23,18 +23,20 @@ namespace s3auto.Controls
         }
 
         public S3Window(Rectangle parent)
-            : this()
         {
             parentRect = parent;
-            XmlNode cp = Helper.Helper.XMLRoot.SelectSingleNode(Name + "/Rect");
-            m_rect = new Rectangle(cp.GetRect().X + parentRect.X,
-                cp.GetRect().Y + parentRect.Y, cp.GetRect().Width, cp.GetRect().Height);
         }
 
         public string Name
         {
             get { return name; }
-            set { name = value; }
+            set
+            {
+                name = value;
+                XmlNode cp = Helper.Helper.XMLRoot.SelectSingleNode(Name + "/Rect");
+                m_rect = new Rectangle(cp.GetRect().X + parentRect.X,
+                    cp.GetRect().Y + parentRect.Y, cp.GetRect().Width, cp.GetRect().Height);
+            }
         }
 
         /// <summary>

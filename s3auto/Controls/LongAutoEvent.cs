@@ -15,10 +15,10 @@ namespace s3auto.Controls
         private int eventDuration = 30;
         private DateTime timeStart;
 
-        public LongAutoEvent(IBrowser b, Rectangle rect)
+        public LongAutoEvent(IBrowser b)
         {
             this.b = b;
-            this.rect = rect;
+            this.rect = b.Rect.ToRectangle();
             buttonEventLoc = new S3Button(rect);
         }
 
@@ -33,7 +33,7 @@ namespace s3auto.Controls
         /// <summary>
         /// In minutes, default is 30 min.
         /// </summary>
-        public int EventDuration 
+        public int EventDuration
         {
             get { return eventDuration; }
             set { eventDuration = value; }
@@ -67,17 +67,37 @@ namespace s3auto.Controls
     }
 
     public class CampBat : LongAutoEvent
-    { }
+    {
+        public CampBat(IBrowser b)
+            : base(b)
+        { }
+    }
 
     public class SupremacyBat : LongAutoEvent
-    { }
+    {
+        public SupremacyBat(IBrowser b)
+            : base(b)
+        { }
+    }
 
     public class CityBat : LongAutoEvent
-    { }
+    {
+        public CityBat(IBrowser b)
+            : base(b)
+        { }
+    }
 
     public class FactionBat : LongAutoEvent
-    { }
+    {
+        public FactionBat(IBrowser b)
+            : base(b)
+        { }
+    }
 
     public class HeroIsland : LongAutoEvent
-    { }
+    {
+        public HeroIsland(IBrowser b)
+            : base(b)
+        { }
+    }
 }

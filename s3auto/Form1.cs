@@ -522,8 +522,10 @@ namespace s3auto
 
         private void button5_Click(object sender, EventArgs e)
         {
-            Thread t = new Thread(new ThreadStart(zhichi));
-            t.Start();
+            //Thread t = new Thread(new ThreadStart(zhichi));
+            //t.Start();
+            Activity a = new Activity();
+            a.RunAll();
         }
 
         public void zhichi()

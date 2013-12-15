@@ -42,6 +42,11 @@ namespace s3auto
             public int Top;
             public int Right;
             public int Bottom;
+
+            public Rectangle ToRectangle()
+            {
+                return new Rectangle(Left, Top, Right - Left, Bottom - Top);
+            }
         }
 
         [DllImport("user32.dll")]

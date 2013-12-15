@@ -37,7 +37,7 @@ namespace s3auto.Browsers
             get
             {
                 XmlNode n = Helper.Helper.XMLRoot.SelectSingleNode(
-                    string.Format("browsers/browser[name='{0}']/@className", browserName));
+                    string.Format("browsers/browser[@name='{0}']/@className", browserName));
                 return n.Value;
             }
         }
@@ -47,7 +47,7 @@ namespace s3auto.Browsers
             get
             {
                 XmlNode n = Helper.Helper.XMLRoot.SelectSingleNode(
-                    string.Format("browsers/browser[name='{0}']/@flashWinClassName", browserName));
+                    string.Format("browsers/browser[@name='{0}']/@flashWinClassName", browserName));
                 return n.Value;
             }
         }
@@ -57,7 +57,7 @@ namespace s3auto.Browsers
             get
             {
                 XmlNode n = Helper.Helper.XMLRoot.SelectSingleNode(
-                    string.Format("browsers/browser[name='{0}']/@flashWinRootClassName", browserName));
+                    string.Format("browsers/browser[@name='{0}']/@flashWinRootClassName", browserName));
                 return n.Value;
             }
         }

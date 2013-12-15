@@ -10,34 +10,25 @@ namespace s3auto
 {
     public class Activity
     {
-        List<KeyValuePair<string, Actions>> list = new List<KeyValuePair<string, Actions>>();
+        List<KeyValuePair<Thread, Actions>> list = new List<KeyValuePair<Thread, Actions>>();
         public Activity()
         {
             foreach (XmlNode n in Helper.Helper.XMLRoot.SelectNodes("browsers/browser"))
             {
+                Actions a = null;
                 if (n.Attributes["name"].Value == "firefox")
-                {
-                    list.Add(new KeyValuePair<string, Actions>(n.Attributes["name"].Value,
-                        new Actions(new Browsers.S3Firefox())));
-                }
+                    a = new Actions(new Browsers.S3Firefox());
+                else if (n.Attributes["name"].Value == "sougou")
+                    a = new Actions(new Browsers.S3Firefox());
+                else if (n.Attributes["name"].Value == "chrome")
+                    a = new Actions(new Browsers.S3Firefox());
+                else if (n.Attributes["name"].Value == "opera")
+                    a = new Actions(new Browsers.S3Firefox());
+                else continue;
 
-                if (n.Attributes["name"].Value == "sougou")
-                {
-                    list.Add(new KeyValuePair<string, Actions>(n.Attributes["name"].Value,
-                          new Actions(new Browsers.S3Sougou())));
-                }
-
-                if (n.Attributes["name"].Value == "chrome")
-                {
-                    list.Add(new KeyValuePair<string, Actions>(n.Attributes["name"].Value,
-                          new Actions(new Browsers.S3Chrome())));
-                }
-
-                if (n.Attributes["name"].Value == "opera")
-                {
-                    list.Add(new KeyValuePair<string, Actions>(n.Attributes["name"].Value,
-                          new Actions(new Browsers.S3Opera())));
-                }
+                Thread t = new Thread(new ThreadStart(a.DoAll));
+                t.Name = "t_" + n.Attributes["name"].Value;
+                list.Add(new KeyValuePair<Thread, Actions>(t, a));
             }
         }
 
@@ -45,7 +36,7 @@ namespace s3auto
         {
             foreach (var kv in list)
             {
-                kv.Value.Run();
+                kv.Key.Start();
             }
         }
 
@@ -53,7 +44,7 @@ namespace s3auto
         {
             foreach (var kv in list)
             {
-                kv.Value.Stop();
+                kv.Key.Abort();
             }
         }
     }

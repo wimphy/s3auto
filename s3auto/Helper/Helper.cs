@@ -20,7 +20,7 @@ namespace s3auto.Helper
             }
             catch (Exception e)
             {
-                new Logger().WriteLine(e.Message);
+                Logger.Log(e.Message);
             }
             return new System.Drawing.Point(x, y);
         }
@@ -40,7 +40,7 @@ namespace s3auto.Helper
             }
             catch (Exception e)
             {
-                new Logger().WriteLine(e.Message);
+                Logger.Log(e.Message);
             }
             return new System.Drawing.Rectangle(x, y, width, height);
         }
