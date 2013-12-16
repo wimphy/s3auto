@@ -8,7 +8,8 @@ namespace s3auto.Helper
 {
     public static class Helper
     {
-        private static XmlDocument doc = null;
+        //Rename doc to class, just to try @class as a varible.
+        private static XmlDocument @class = null;
         public static System.Drawing.Point GetPoint(this System.Xml.XmlNode n)
         {
             int x =0;
@@ -57,12 +58,12 @@ namespace s3auto.Helper
         {
             get
             {
-                if (doc == null)
+                if (@class == null)
                 {
-                    doc = new XmlDocument();
-                    doc.Load("Positions.xml");
+                    @class = new XmlDocument();
+                    @class.Load("Positions.xml");
                 }
-                return doc;
+                return @class;
             }
         }
     }
